@@ -16,3 +16,12 @@ model UserExample {
   email String  @unique
   name  String?
 }
+
+model Media {
+  id Int @id @default(autoincrement())
+  title String
+  rating String
+  year Int
+  category String
+  isTrending Boolean
+}
