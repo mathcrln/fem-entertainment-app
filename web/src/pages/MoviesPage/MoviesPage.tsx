@@ -1,21 +1,14 @@
-import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags } from '@redwoodjs/web';
+import SearchBar from 'src/components/SearchBar/SearchBar';
 
 const MoviesPage = () => {
-  return (
-    <>
-      <MetaTags title="Movies" description="Movies page" />
+	return (
+		<>
+			<MetaTags title='Movies' description='Movies page' />
+			<SearchBar text='Search for movies' />
+			<h1 className='text-white font-light my-10 text-4xl'>Movies</h1>
+		</>
+	);
+};
 
-      <h1>MoviesPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/MoviesPage/MoviesPage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>movies</code>, link to me with `
-        <Link to={routes.movies()}>Movies</Link>`
-      </p>
-    </>
-  )
-}
-
-export default MoviesPage
+export default MoviesPage;

@@ -6,8 +6,8 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 	return (
-		<div className='flex mt-10'>
-			<Navigation />
+		<div className='flex flex-col md:flex-row md:pt-10 relative'>
+			<Navigation className='mb-10 md:mb-initial' />
 			<div className=' w-full px-10'>{children}</div>
 		</div>
 	);

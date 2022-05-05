@@ -8,14 +8,21 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route } from '@redwoodjs/router';
+import AuthLayout from './layouts/AuthLayout/AuthLayout';
 import MainLayout from './layouts/MainLayout/MainLayout';
 
 const Routes = () => {
 	return (
 		<Router>
+			<AuthLayout>
+				<Route path='/signup' page={SignupPage} name='signup' />
+				<Route path='/login' page={LoginPage} name='login' />
+			</AuthLayout>
 			<MainLayout>
-				<Route path='/movies' page={MoviesPage} name='movies' />
 				<Route path='/' page={HomePage} name='home' />
+				<Route path='/movies' page={MoviesPage} name='movies' />
+				<Route path='/tv-series' page={TvSeriesPage} name='tvSeries' />
+				<Route path='/bookmarked' page={BookmarkedPage} name='bookmarked' />
 				<Route notfound page={NotFoundPage} />
 			</MainLayout>
 		</Router>

@@ -3,7 +3,10 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  html, body{
+    @apply h-full;
+  }
   body{
-    @apply bg-darkBlue;
+    @apply bg-darkBlue caret-red;
   }
 }
