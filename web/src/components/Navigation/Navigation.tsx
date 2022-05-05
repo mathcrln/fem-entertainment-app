@@ -8,12 +8,12 @@ import TvIcon from '../icons/TvIcon/TvIcon';
 export default function Navigation({ className }: { className?: string }) {
 	return (
 		<div
-			className={`sticky top-0 md:top-5 bg-semiDarkBlue md:rounded-[20px] flex md:flex-col w-full h-14 md:w-[96px] md:ml-10 md:h-[90vh] items-center justify-between ${className}`}
+			className={`sticky top-0 md:top-5 bg-semiDarkBlue md:rounded-[20px] flex lg:flex-col w-full h-14 md:h-[72px] lg:w-[96px] lg:ml-10 lg:h-[90vh] items-center justify-between ${className}`}
 		>
 			<Link to={routes.home()}>
-				<Logo className='ml-4 md:ml-0 md:mt-10' />
+				<Logo className='ml-4 lg:ml-0 lg:mt-10' />
 			</Link>
-			<nav className='flex md:flex-col self-center gap-5 text-greyishBlue'>
+			<nav className='flex lg:flex-col  gap-5 text-greyishBlue'>
 				<NavLink activeClassName='text-white' to={routes.home()}>
 					<HomeIcon className='hover:text-red' />
 				</NavLink>
@@ -27,7 +27,8 @@ export default function Navigation({ className }: { className?: string }) {
 					<BookmarkIcon className='hover:text-red' />
 				</NavLink>
 			</nav>
-			<div className='mr-4 rounded-full h-8 w-8 md:h-10 md:w-10 border-2 border-white  my-10' />
+
+			<div className='mr-4 lg:mr-0 rounded-full h-8 w-8 md:h-10 md:w-10 border-2 border-white  my-10' />
 		</div>
 	);
 }
