@@ -1,7 +1,7 @@
 import { MetaTags } from '@redwoodjs/web';
 import SearchBar from 'src/components/SearchBar/SearchBar';
 import Card, { CardModel } from 'src/components/Card/Card';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export type Thumbnail = {
 	trending: {
@@ -27,13 +27,17 @@ export type Media = {
 export default function HomePage() {
 	const [trending, setTrending] = useState([]);
 	const [recommended, setRecommended] = useState([]);
-	fetch('/data.json')
-		.then((res) => res.json())
-		.then((medias: Media[]) => {
-			setTrending(medias.filter((media) => media.isTrending));
-			setRecommended(medias.filter((media) => !media.isTrending));
-		});
 
+	useEffect(() => {
+		fetch('/data.json')
+			.then((res) => res.json())
+			.then((medias: Media[]) => {
+				console.log('in promise');
+				setTrending(medias.filter((media) => media.isTrending));
+				setRecommended(medias.filter((media) => !media.isTrending));
+			});
+		console.log('rendered');
+	}, []);
 	return (
 		<>
 			<MetaTags title='Home' description='Home page' />
@@ -79,7 +83,7 @@ export default function HomePage() {
 function FeaturedCard({ title, thumbnail, rating, year, category }: CardModel) {
 	return (
 		<div className='aspect-video w-[300px] md:w-[470px] bg-red rounded-lg relative flex-shrink-0'>
-			<img src={thumbnail.regular.medium} alt='' className='rounded-lg w-full absolute top-0 right-0 left-0 bottom-0' />
+			<img src={thumbnail.regular.medium} alt='' className='rounded-lg w-full ' />
 			<div className='text-white absolute left-0 bottom-0 ml-5 mb-5'>
 				<div className='mt-4 mb-1 flex gap-2 text-white text-opacity-75'>
 					<small>{year}</small>
