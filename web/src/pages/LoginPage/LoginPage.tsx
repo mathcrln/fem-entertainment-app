@@ -1,14 +1,19 @@
-import { Link, routes } from '@redwoodjs/router';
+import { Link, routes, navigate } from '@redwoodjs/router';
 import { MetaTags } from '@redwoodjs/web';
+import { FormEvent } from 'react';
 
 const LoginPage = () => {
+	const onConfirm = (e: FormEvent) => {
+		e.preventDefault();
+		navigate(routes.home());
+	};
 	return (
 		<>
 			<MetaTags title='Login' description='Login page' />
 
 			<h1 className='text-3xl font-light'>Login</h1>
 
-			<form className='mt-10'>
+			<form className='mt-10' onSubmit={(e) => onConfirm(e)}>
 				<div className='mb-3'>
 					<input
 						className='bg-transparent border-b border-white w-full p-4'

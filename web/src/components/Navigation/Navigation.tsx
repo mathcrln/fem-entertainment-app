@@ -28,7 +28,9 @@ export default function Navigation({ className }: { className?: string }) {
 				</NavLink>
 			</nav>
 
-			<div className='mr-4 lg:mr-0 rounded-full h-8 w-8 md:h-10 md:w-10 border-2 border-white  my-10' />
+			<Link to={routes.login()} className='mr-4 lg:mr-0 rounded-full h-8 w-8 md:h-10 md:w-10 border-2 border-white  my-10'>
+				<img src='/image-avatar.png' alt='' />
+			</Link>
 		</div>
 	);
 }

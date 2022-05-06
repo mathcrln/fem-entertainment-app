@@ -62,7 +62,7 @@ export default function HomePage() {
 			</section>
 			<section className=''>
 				<h2 className='text-white font-light my-10 text-4xl'>Recommended for you</h2>
-				<div className='my-10 grid grid-cols-2 md:grid-cols-4 gap-[15px] md:gap-10'>
+				<div className='my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[15px] md:gap-10'>
 					{recommended.map((media) => (
 						<Card
 							key={media.title}
@@ -82,7 +82,7 @@ export default function HomePage() {
 
 function FeaturedCard({ title, thumbnail, rating, year, category }: CardModel) {
 	return (
-		<div className='aspect-video w-[300px] md:w-[470px] bg-red rounded-lg relative flex-shrink-0'>
+		<div className='aspect-video w-[300px] md:w-[470px] bg-greyishBlue rounded-lg relative flex-shrink-0 isolate'>
 			<img src={thumbnail.regular.medium} alt='' className='rounded-lg w-full ' />
 			<div className='text-white absolute left-0 bottom-0 ml-5 mb-5'>
 				<div className='mt-4 mb-1 flex gap-2 text-white text-opacity-75'>
