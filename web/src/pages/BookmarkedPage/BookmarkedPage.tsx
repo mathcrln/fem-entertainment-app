@@ -7,7 +7,7 @@ import useSearch from 'src/hooks/useSearch.hook';
 
 const BookmarkedPage = () => {
 	const { medias, setBookmark } = useMedias();
-	const { search, searchResults, onSearch } = useSearch(medias);
+	const { search, searchResults, onSearch } = useSearch(medias.filter((media) => media.isBookmarked));
 
 	return (
 		<>
