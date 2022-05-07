@@ -8,7 +8,7 @@ import TvIcon from '../icons/TvIcon/TvIcon';
 export default function Navigation({ className }: { className?: string }) {
 	return (
 		<div
-			className={`sticky top-0 md:top-5 bg-semiDarkBlue md:rounded-[20px] flex lg:flex-col w-full h-14 md:h-[72px] lg:w-[96px] lg:ml-10 lg:h-[90vh] items-center justify-between ${className}`}
+			className={`lg:sticky top-0 md:mt-5 bg-semiDarkBlue md:rounded-[20px] flex lg:flex-col w-full h-14 md:h-[72px] lg:w-[96px] lg:ml-10 lg:h-[90vh] items-center justify-between ${className}`}
 		>
 			<Link to={routes.home()}>
 				<Logo className='ml-4 lg:ml-0 lg:mt-10' />

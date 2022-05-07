@@ -1,14 +1,19 @@
-import { Link, routes } from '@redwoodjs/router';
+import { Link, navigate, routes } from '@redwoodjs/router';
 import { MetaTags } from '@redwoodjs/web';
+import { FormEvent } from 'react';
 
 const SignupPage = () => {
+	const onConfirm = (e: FormEvent) => {
+		e.preventDefault();
+		navigate(routes.home());
+	};
 	return (
 		<>
 			<MetaTags title='Signup' description='Signup page' />
 
 			<h1 className='text-3xl font-light'>Signup</h1>
 
-			<form className='mt-10'>
+			<form className='mt-10' onSubmit={(e) => onConfirm(e)}>
 				<div className='mb-3'>
 					<input
 						className='bg-transparent border-b border-white w-full p-4'
@@ -42,7 +47,7 @@ const SignupPage = () => {
 			</form>
 			<p className='text-center'>
 				{'Already have an account? '}
-				<Link to={routes.signup()} className='text-red hover:underline'>
+				<Link to={routes.login()} className='text-red hover:underline'>
 					Login
 				</Link>
 			</p>
