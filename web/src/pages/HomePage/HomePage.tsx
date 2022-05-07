@@ -7,15 +7,16 @@ import useSearch from 'src/hooks/useSearch.hook';
 import useMedias from 'src/hooks/useMedias.hook';
 
 export default function HomePage() {
-	const { medias } = useMedias();
+	const { medias, setBookmark } = useMedias();
 	const { search, searchResults, onSearch } = useSearch(medias);
 
 	return (
 		<>
 			<MetaTags title='Home' description='Home page' />
 			<SearchBar text='Search for movies or TV series' handler={onSearch} />
-			<SearchResults search={search} results={searchResults} />
-
+			<SearchResults search={search} results={searchResults}>
+				<CardList list={searchResults} setBookmark={setBookmark} />
+			</SearchResults>
 			{!search && (
 				<>
 					<section>
@@ -25,15 +26,7 @@ export default function HomePage() {
 								{medias
 									.filter((media) => media.isTrending)
 									.map((media) => (
-										<FeaturedCard
-											key={media.title}
-											title={media.title}
-											category={media.category}
-											thumbnail={media.thumbnail}
-											rating={media.rating}
-											year={media.year}
-											isBookmarked={media.isBookmarked}
-										/>
+										<FeaturedCard key={media.title} media={media} setBookmark={setBookmark} />
 									))}
 							</div>
 						</div>
@@ -41,7 +34,7 @@ export default function HomePage() {
 
 					<section className=''>
 						<h2 className='text-white font-light my-10 text-4xl'>Recommended for you</h2>
-						<CardList list={medias.filter((media) => !media.isTrending)} />
+						<CardList list={medias.filter((media) => !media.isTrending)} setBookmark={setBookmark} />
 					</section>
 				</>
 			)}

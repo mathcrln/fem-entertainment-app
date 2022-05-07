@@ -1,8 +1,7 @@
-import { CardModel } from '../Card/Card';
-import CardList from '../CardList/CardList';
+import { Media } from 'types/media';
 
-const SearchResults = ({ search, results }: { search: string; results: CardModel[] }) => {
-	if (!search || results.length === 0) return null;
+const SearchResults = ({ search, results, children }: { search: string; results: Media[]; children: React.ReactNode }) => {
+	if (!search) return null;
 	return (
 		<section>
 			<h2 className='text-white font-light my-10 text-4xl'>
@@ -10,7 +9,7 @@ const SearchResults = ({ search, results }: { search: string; results: CardModel
 				{search}
 				{"'"}
 			</h2>
-			<CardList list={results} />
+			{children}
 		</section>
 	);
 };

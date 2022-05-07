@@ -1,6 +1,6 @@
 import { Link, NavLink, routes } from '@redwoodjs/router';
 import Logo from 'public/logo.svg';
-import BookmarkIcon from '../icons/BookmarkIcon/BookmarkIcon';
+import { BookmarkIconMenu } from '../icons/BookmarkIcon/BookmarkIcon';
 import HomeIcon from './HomeIcon/HomeIcon';
 import MovieIcon from '../icons/MovieIcon/MovieIcon';
 import TvIcon from '../icons/TvIcon/TvIcon';
@@ -8,7 +8,7 @@ import TvIcon from '../icons/TvIcon/TvIcon';
 export default function Navigation({ className }: { className?: string }) {
 	return (
 		<div
-			className={`lg:sticky top-0 md:mt-5 bg-semiDarkBlue md:rounded-[20px] flex lg:flex-col w-full h-14 md:h-[72px] lg:w-[96px] lg:ml-10 lg:h-[90vh] items-center justify-between ${className}`}
+			className={`lg:sticky lg:top-5 top-0 md:mt-5 bg-semiDarkBlue md:rounded-[20px] flex lg:flex-col w-full h-14 md:h-[72px] lg:w-[96px] lg:ml-10 lg:h-[90vh] items-center justify-between ${className}`}
 		>
 			<Link to={routes.home()}>
 				<Logo className='ml-4 lg:ml-0 lg:mt-10' />
@@ -24,7 +24,7 @@ export default function Navigation({ className }: { className?: string }) {
 					<TvIcon className='hover:text-red' />
 				</NavLink>
 				<NavLink activeClassName='text-white' to={routes.bookmarked()}>
-					<BookmarkIcon className='hover:text-red' />
+					<BookmarkIconMenu className='hover:text-red' />
 				</NavLink>
 			</nav>
 

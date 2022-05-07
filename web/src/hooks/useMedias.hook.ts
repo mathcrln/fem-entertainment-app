@@ -1,34 +1,39 @@
 import { useState, useEffect } from 'react';
 import { Media } from 'types/media';
 
-// type Filter = {
-// 	category?: string;
-// 	rating?: string;
-// 	isBookmarked?: boolean;
-// };
-
 export default function useMedias() {
-	const [medias, setMedias] = useState([]);
+	const [medias, setMedias] = useState<Media[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	const fetchMedias = async () => {
-		setLoading(true);
-		setError(null);
-		try {
-			fetch('/data.json')
-				.then((res) => res.json())
-				.then((list: Media[]) => setMedias(list));
-		} catch (error) {
-			setError(error);
+	const setBookmark = (media: Media) => {
+		const el = medias.find((m) => m.title === media.title);
+		if (el) {
+			el.isBookmarked = !el.isBookmarked;
+			setMedias([...medias]);
+			localStorage.setItem('medias', JSON.stringify(medias));
 		}
-		setLoading(false);
 	};
 
 	useEffect(() => {
-		fetchMedias();
+		setLoading(true);
+		setError(null);
+		try {
+			const list = localStorage.getItem('medias');
+			if (list) return setMedias(JSON.parse(list));
+
+			fetch('/data.json')
+				.then((res) => res.json())
+				.then((list: Media[]) => {
+					setMedias(list);
+					localStorage.setItem('medias', JSON.stringify(list));
+				});
+		} catch (error) {
+			console.log(error);
+			setError(error);
+		}
+		setLoading(false);
 		return () => {};
 	}, []);
 
-	return { medias, loading, error };
+	return { medias, loading, error, setBookmark };
 }
